@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/livenessContainer"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/titleLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="15dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/titleTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="14sp"
+                        android:text="@string/liveness_title"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/primaryText"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <View android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:id="@+id/closeButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_close_24"
+                        tools:ignore="ContentDescription,HardcodedText,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="0dp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/welcomeScreenLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="0dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/descriptionTextview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="15dp"
+                            android:lineHeight="20dp"
+                            android:text="@string/liveness_description"
+                            android:textColor="#66000000"
+                            android:textSize="14sp"
+                            tools:ignore="UnusedAttribute,TextContrastCheck" />
+
+                        <TextView
+                            android:id="@+id/imageTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0dp"
+                            android:text="@string/liveness_instructions"
+                            android:textFontWeight="500"
+                            android:textSize="14sp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/goodFitImageview"
+                                android:layout_width="0dp"
+                                android:layout_height="210dp"
+                                android:layout_marginEnd="5dp"
+                                android:src="@drawable/good_fit"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/tooFarImageView"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="ContentDescription" />
+
+                            <ImageView
+                                android:id="@+id/tooFarImageView"
+                                android:layout_width="0dp"
+                                android:layout_height="210dp"
+                                android:layout_marginStart="5dp"
+                                android:src="@drawable/too_far"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/goodFitImageview"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="ContentDescription" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <LinearLayout
+                            android:id="@+id/instructionList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:padding="10dp">
+
+                            <Button
+                                android:id="@+id/startFacelivenessButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Proceed Liveness Check"
+                                android:textSize="14sp"
+                                android:textColor="@color/white"
+                                android:background="@drawable/rounded_button_background"
+                                android:backgroundTint="@color/primaryText"
+                                android:elevation="18dp"
+                                android:clipToOutline="true"
+                                android:paddingHorizontal="30dp"
+                                />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/verificationScreenLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="invisible">
+
+                        <androidx.compose.ui.platform.ComposeView
+                            android:id="@+id/composeViewForFaceliveness"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
