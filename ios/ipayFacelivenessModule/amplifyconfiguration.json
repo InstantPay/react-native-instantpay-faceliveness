@@ -6,7 +6,7 @@
                     "CognitoIdentity": {
                         "Default": {
                             "PoolId": "",
-                            "Region": "ap-south-1"
+                            "Region": ""
                         }
                     }
                 }

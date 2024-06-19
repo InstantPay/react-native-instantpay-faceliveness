@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* InstantpayFacelivenessExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* InstantpayFacelivenessExampleTests.m */; };
 		0C80B921A6F3F58F76C31292 /* libPods-InstantpayFacelivenessExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-InstantpayFacelivenessExample.a */; };
-		10BEC7402C16E5C40073BD4D /* TestViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEC73F2C16E5C40073BD4D /* TestViewManager.swift */; };
-		10BEC7422C16F4430073BD4D /* TestViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10BEC7412C16F4430073BD4D /* TestViewManager.m */; };
-		10BEC7442C16F48E0073BD4D /* MainTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEC7432C16F48E0073BD4D /* MainTest.swift */; };
-		10BEC7462C16FDDD0073BD4D /* Test1ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BEC7452C16FDDD0073BD4D /* Test1ViewManager.swift */; };
+		10EBF3E22C22AFBF007A239B /* FaceLiveness in Frameworks */ = {isa = PBXBuildFile; productRef = 10EBF3E12C22AFBF007A239B /* FaceLiveness */; };
+		10EBF3F82C22B438007A239B /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 10EBF3F32C22B438007A239B /* amplifyconfiguration.json */; };
+		10EBF3F92C22B438007A239B /* InstantpayFacelivenessViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EBF3F42C22B438007A239B /* InstantpayFacelivenessViewManager.m */; };
+		10EBF3FA2C22B438007A239B /* InstantpayFacelivenessViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBF3F52C22B438007A239B /* InstantpayFacelivenessViewManager.swift */; };
+		10EBF3FB2C22B438007A239B /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBF3F62C22B438007A239B /* MainScreenView.swift */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -35,10 +36,10 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* InstantpayFacelivenessExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstantpayFacelivenessExampleTests.m; sourceTree = "<group>"; };
 		10BEC73E2C16E5C40073BD4D /* InstantpayFacelivenessExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InstantpayFacelivenessExample-Bridging-Header.h"; sourceTree = "<group>"; };
-		10BEC73F2C16E5C40073BD4D /* TestViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewManager.swift; sourceTree = "<group>"; };
-		10BEC7412C16F4430073BD4D /* TestViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewManager.m; sourceTree = "<group>"; };
-		10BEC7432C16F48E0073BD4D /* MainTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTest.swift; sourceTree = "<group>"; };
-		10BEC7452C16FDDD0073BD4D /* Test1ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test1ViewManager.swift; sourceTree = "<group>"; };
+		10EBF3F32C22B438007A239B /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		10EBF3F42C22B438007A239B /* InstantpayFacelivenessViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstantpayFacelivenessViewManager.m; sourceTree = "<group>"; };
+		10EBF3F52C22B438007A239B /* InstantpayFacelivenessViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantpayFacelivenessViewManager.swift; sourceTree = "<group>"; };
+		10EBF3F62C22B438007A239B /* MainScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* InstantpayFacelivenessExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantpayFacelivenessExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = InstantpayFacelivenessExample/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = InstantpayFacelivenessExample/AppDelegate.mm; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EBF3E22C22AFBF007A239B /* FaceLiveness in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-InstantpayFacelivenessExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,20 +94,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		10EBF3F72C22B438007A239B /* ipayFacelivenessModule */ = {
+			isa = PBXGroup;
+			children = (
+				10EBF3F32C22B438007A239B /* amplifyconfiguration.json */,
+				10EBF3F42C22B438007A239B /* InstantpayFacelivenessViewManager.m */,
+				10EBF3F52C22B438007A239B /* InstantpayFacelivenessViewManager.swift */,
+				10EBF3F62C22B438007A239B /* MainScreenView.swift */,
+			);
+			name = ipayFacelivenessModule;
+			path = InstantpayFacelivenessExample/ipayFacelivenessModule;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* InstantpayFacelivenessExample */ = {
 			isa = PBXGroup;
 			children = (
+				10EBF3F72C22B438007A239B /* ipayFacelivenessModule */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				10BEC73F2C16E5C40073BD4D /* TestViewManager.swift */,
 				10BEC73E2C16E5C40073BD4D /* InstantpayFacelivenessExample-Bridging-Header.h */,
-				10BEC7412C16F4430073BD4D /* TestViewManager.m */,
-				10BEC7432C16F48E0073BD4D /* MainTest.swift */,
-				10BEC7452C16FDDD0073BD4D /* Test1ViewManager.swift */,
 			);
 			name = InstantpayFacelivenessExample;
 			sourceTree = "<group>";
@@ -203,6 +214,9 @@
 			dependencies = (
 			);
 			name = InstantpayFacelivenessExample;
+			packageProductDependencies = (
+				10EBF3E12C22AFBF007A239B /* FaceLiveness */,
+			);
 			productName = InstantpayFacelivenessExample;
 			productReference = 13B07F961A680F5B00A75B9A /* InstantpayFacelivenessExample.app */;
 			productType = "com.apple.product-type.application";
@@ -233,6 +247,9 @@
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
+			packageReferences = (
+				10EBF3D92C22A9C2007A239B /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */,
+			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -256,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				10EBF3F82C22B438007A239B /* amplifyconfiguration.json in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,11 +425,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
-				10BEC7442C16F48E0073BD4D /* MainTest.swift in Sources */,
-				10BEC7462C16FDDD0073BD4D /* Test1ViewManager.swift in Sources */,
+				10EBF3FB2C22B438007A239B /* MainScreenView.swift in Sources */,
+				10EBF3F92C22B438007A239B /* InstantpayFacelivenessViewManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				10BEC7422C16F4430073BD4D /* TestViewManager.m in Sources */,
-				10BEC7402C16E5C40073BD4D /* TestViewManager.swift in Sources */,
+				10EBF3FA2C22B438007A239B /* InstantpayFacelivenessViewManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,7 +601,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -604,10 +621,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -656,7 +670,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -675,10 +689,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -717,6 +728,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		10EBF3D92C22A9C2007A239B /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ui-swift-liveness";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.14;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		10EBF3E12C22AFBF007A239B /* FaceLiveness */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10EBF3D92C22A9C2007A239B /* XCRemoteSwiftPackageReference "amplify-ui-swift-liveness" */;
+			productName = FaceLiveness;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
 }

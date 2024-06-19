@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View, Button, SafeAreaView, Platform } from 'react-native';
 import { InstantpayFacelivenessView } from 'react-native-instantpay-faceliveness';
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
         let items = JSON.stringify({
             debug : false,
             sessionId : '',
-            welcomeScreenConfig : {
+            /* welcomeScreenConfig : {
                 hideScreen: false,
                 proceedButtonText : "",
                 description : "",
@@ -22,13 +22,13 @@ export default function App() {
             },
             verificationScreenConfig : {
                 hideIntroScreen : false
-            },
+            },*/
             config: {
                 hideTitleBar : false,
-                title : "",
-                //titleColor : "#7DD6E8",
+                title : "dsfdsf",
+                titleColor : "#000000",
                 hideCloseButton : false,
-            }
+            } 
         });
 
         setOptionsItem(items);
@@ -63,37 +63,39 @@ export default function App() {
     }
 
     return (
-        <View style={styles.container}>
-            {
-                !showFaceliveness ? 
-                <>
-                    <Button
-                        title='Start faceliveness'
-                        onPress={() => startFaceliveness()}
-                    />
-                </> : <></>
-            }
-
-            {
-                
-                optionsItem!="" && showFaceliveness ?
-                    <InstantpayFacelivenessView 
-                        color="#ffffff" 
-                        style={styles.box}
-                        options={optionsItem}
-                        onCancelCallback={(event) => onCancelCallbackHandeler(event)}
-                        onErrorCallback={(event) => onErrorCallbackHandeler(event)}
-                        onSuccessCallback={(event) => onSuccessCallbackHandeler(event)}
-                    /> : <></>
-            }
+        <SafeAreaView style={styles.container}>
             
-        </View>
+            <View >
+                {
+                    !showFaceliveness ? 
+                    <>
+                        <Button
+                            title='Start faceliveness'
+                            onPress={() => startFaceliveness()}
+                        />
+                    </> : <></>
+                }
+
+                {
+                    
+                    optionsItem!="" && showFaceliveness ?
+                        <InstantpayFacelivenessView 
+                            style={styles.box}
+                            options={optionsItem}
+                            onCancelCallback={(event) => onCancelCallbackHandeler(event)}
+                            onErrorCallback={(event) => onErrorCallbackHandeler(event)}
+                            onSuccessCallback={(event) => onSuccessCallbackHandeler(event)}
+                        /> : <></>
+                }
+            </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        margin: 10
         //alignItems: 'center',
         //justifyContent: 'center',
     },

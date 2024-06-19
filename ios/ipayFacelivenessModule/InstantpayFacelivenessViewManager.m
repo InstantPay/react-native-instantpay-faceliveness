@@ -10,4 +10,9 @@ RCT_EXPORT_VIEW_PROPERTY(options, NSString)
 
 RCT_EXPORT_VIEW_PROPERTY(onErrorCallback, RCTBubblingEventBlock)
 
+RCT_EXPORT_VIEW_PROPERTY(onCancelCallback, RCTBubblingEventBlock)
+
+RCT_EXPORT_VIEW_PROPERTY(onSuccessCallback, RCTBubblingEventBlock)
+
+
 @end

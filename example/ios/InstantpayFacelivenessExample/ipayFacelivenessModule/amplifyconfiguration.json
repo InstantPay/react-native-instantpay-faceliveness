@@ -1,0 +1,16 @@
+{
+    "auth": {
+        "plugins": {
+            "awsCognitoAuthPlugin": {
+                "CredentialsProvider": {
+                    "CognitoIdentity": {
+                        "Default": {
+                            "PoolId": "",
+                            "Region": ""
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
