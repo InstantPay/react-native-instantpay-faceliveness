@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -35,7 +36,13 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.isEmpty
+import aws.smithy.kotlin.runtime.time.Instant
+import com.amplifyframework.auth.AWSCredentials
+import com.amplifyframework.auth.AWSCredentialsProvider
+import com.amplifyframework.auth.AuthException
+import com.amplifyframework.core.Consumer
 import org.json.JSONArray
+import com.amplifyframework.auth.AWSTemporaryCredentials
 
 
 class MainScreenView(context: Context) : ConstraintLayout(context){
@@ -57,6 +64,7 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
     var facelivenessOptions = mutableMapOf<Any,Any>(
         "debug" to false,
         "sessionId" to "",
+        "accessToken" to "",
         "welcomeScreenConfig" to mutableMapOf<Any,Any>(
             "hideScreen" to false,
             "proceedButtonText" to  "Proceed Liveness Check",
@@ -139,9 +147,9 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
 
             try {
 
-                Amplify.addPlugin(AWSCognitoAuthPlugin())
+                //Amplify.addPlugin(AWSCognitoAuthPlugin())
 
-                Amplify.configure(context)
+                //Amplify.configure(context)
 
                 isAmplifyConfigured = true
 
@@ -156,6 +164,11 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
         if(items.has("sessionId")){
 
             facelivenessOptions.put("sessionId", items.getString("sessionId"))
+        }
+
+        if(items.has("accessToken")){
+
+            facelivenessOptions.put("accessToken", items.getString("accessToken"))
         }
 
         var primaryColor: String = ""
@@ -559,7 +572,8 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
                         }
                         onSendReactNativeEvent(ERROR, output)
                     }
-                }
+                },
+                credentialsProvider = MyCredentialsProvider(facelivenessOptions.get("accessToken").toString())
             )
         }
     }
@@ -707,4 +721,56 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
             }
         )
     }*/
+
+    class MyCredentialsProvider(private var accessToken: String) : AWSCredentialsProvider<AWSCredentials>{
+
+        override fun fetchAWSCredentials(
+            onSuccess: Consumer<AWSCredentials>,
+            onError: Consumer<AuthException>
+        ) {
+            try {
+                val credentials: AWSTemporaryCredentials = fetchCredentialsFromSomewhere()
+
+                onSuccess.accept(credentials)
+            } catch (e: Exception) {
+                onError.accept(AuthException(e.message ?: "Unknown error occurred", "Please check your credentials and try again."))
+            }
+        }
+
+        private fun fetchCredentialsFromSomewhere(): AWSTemporaryCredentials {
+
+            val decodedBytes: ByteArray = Base64.decode(accessToken, Base64.DEFAULT)
+            val decodedString: String = decodedBytes.toString(Charsets.UTF_8)
+
+            val splitData = decodedString.split("##")
+
+            val data3 = splitData[0];
+
+            val data2 = reverseString(splitData[1]);
+
+            val data1 = reverseString(splitData[2]);
+
+            val accessKeyId = data1
+            val secretAccessKey = data2
+            val sessionToken = data3
+            val unixTimestamp: Double = 1.72042503E9
+
+            val secondsSinceEpoch: Long = unixTimestamp.toLong()  // Convert to Long
+
+            val instant: Instant = Instant.fromEpochSeconds(secondsSinceEpoch)
+
+            return AWSTemporaryCredentials(accessKeyId, secretAccessKey, sessionToken, instant)
+        }
+
+        private fun logPrint(value: String?) {
+            if (value == null) {
+                return
+            }
+            Log.i(InstantpayFacelivenessViewManager.LOG_TAG, value)
+        }
+
+        private fun reverseString(input: String): String {
+            return StringBuilder(input).reverse().toString()
+        }
+    }
 }
