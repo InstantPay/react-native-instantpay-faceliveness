@@ -15,7 +15,8 @@ npm install react-native-instantpay-faceliveness
 
 {
     debug : false,
-    sessionId : '', //String
+    sessionId : "", //String
+    accessToken : "", //String
     welcomeScreenConfig : {
         hideScreen: false,
         proceedButtonText : "", //String
