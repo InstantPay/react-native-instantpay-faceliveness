@@ -66,7 +66,7 @@ export default function App() {
     return (
         <SafeAreaView style={styles.container}>
             
-            <View >
+            <View style={{ padding:0}} >
                 {
                     !showFaceliveness ? 
                     <>

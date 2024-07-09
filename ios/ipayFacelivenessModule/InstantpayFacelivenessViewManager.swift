@@ -98,6 +98,7 @@ class InstantpayFacelivenessView : UIView {
     }
     
     let vc = UIHostingController(rootView: MainScreenView().environmentObject(dataStore))
+    //vc.view.backgroundColor = UIColor.red
     vc.view.frame = bounds
     self.addSubview(vc.view)
     self.returningView = vc.view

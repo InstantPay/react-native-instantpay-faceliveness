@@ -18,7 +18,7 @@ public struct MainScreenView: View {
   
   //@Binding var options: [String: Any]
   
-  //@Environment(\.colorScheme) var colorScheme
+  @SwiftUI.Environment(\.colorScheme) var colorScheme
   
   @EnvironmentObject var dataStore: MyDataStore
   
@@ -56,9 +56,9 @@ public struct MainScreenView: View {
             .fontWeight(.semibold)
             .apply{
               if #available(iOS 17.0, *) {
-                $0.foregroundStyle(Color(hex: "#000000")) //configOptions?["titleColor"] as! String
+                $0.foregroundStyle(Color(hex: (configOptions?["titleColor"] as! String)))
               } else {
-                $0.foregroundColor(Color(hex: "#000000"))
+                $0.foregroundColor(Color(hex: (configOptions?["titleColor"] as! String)))
               }
             }
           
@@ -70,9 +70,9 @@ public struct MainScreenView: View {
               .font(Font.system(size: 22, weight: .bold))
               .apply{
                 if #available(iOS 17.0, *) {
-                  $0.foregroundStyle(Color(hex: configOptions?["titleColor"] as! String))
+                  $0.foregroundStyle(Color(hex: (configOptions?["titleColor"] as! String)))
                 } else {
-                  $0.foregroundColor(Color(hex: configOptions?["titleColor"] as! String))
+                  $0.foregroundColor(Color(hex: (configOptions?["titleColor"] as! String)))
                 }
               }
               .onTapGesture {
@@ -99,7 +99,9 @@ public struct MainScreenView: View {
               }
           }
           
-        }.frame(
+        }
+        .background(colorScheme == .dark ? Color(hex: (colorConfigOptions!["backgroundDark"] as! String)) : Color(hex: (colorConfigOptions!["backgroundLight"] as! String)) )
+        .frame(
           minWidth: 0,
           maxWidth: .infinity,
           alignment: .topLeading
@@ -123,9 +125,9 @@ public struct MainScreenView: View {
                     .padding(.bottom, 10)
                     .apply{
                       if #available(iOS 17.0, *) {
-                        $0.foregroundStyle(Color(hex: "#000000", opacity: 0.5))
+                        $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.5) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.5))
                       } else {
-                        $0.foregroundColor(Color(hex: "#000000", opacity: 0.5))
+                        $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.5) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.5))
                       }
                     }
                   
@@ -133,9 +135,9 @@ public struct MainScreenView: View {
                     .padding(.bottom, 3)
                     .apply{
                       if #available(iOS 17.0, *) {
-                        $0.foregroundStyle(Color(hex: "#000000"))
+                        $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String)) : Color(hex: (colorConfigOptions!["primaryLight"] as! String)))
                       } else {
-                        $0.foregroundColor(Color(hex: "#000000"))
+                        $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String)) : Color(hex: (colorConfigOptions!["primaryLight"] as! String)))
                       }
                     }
                   
@@ -182,16 +184,16 @@ public struct MainScreenView: View {
                     HStack(alignment: .top){
                       Text("\(index+1).").apply{
                         if #available(iOS 17.0, *) {
-                          $0.foregroundStyle(Color(hex: "#000000", opacity:0.9))
+                          $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.9))
                         } else {
-                          $0.foregroundColor(Color(hex: "#000000", opacity:0.9))
+                          $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.9))
                         }
                       }
                       Text("\((welcomeScreenOptions?["instructionPoint"] as! Array<String>)[index])").apply{
                         if #available(iOS 17.0, *) {
-                          $0.foregroundStyle(Color(hex: "#000000", opacity:0.9))
+                          $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.9))
                         } else {
-                          $0.foregroundColor(Color(hex: "#000000", opacity:0.9))
+                          $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.9))
                         }
                       }
                     }.padding(.bottom,0.1)
@@ -206,11 +208,17 @@ public struct MainScreenView: View {
                       self.currentScreen = "VERIFICATION"
                       
                     }, label: {
-                      Text("\(welcomeScreenOptions?["proceedButtonText"] as! String)")
+                      Text("\(welcomeScreenOptions?["proceedButtonText"] as! String)").apply{
+                        if #available(iOS 17.0, *) {
+                          $0.foregroundStyle(colorScheme == .dark ? Color(hex: "#FFFFFF") : Color(hex: "#000000"))
+                        } else {
+                          $0.foregroundColor(colorScheme == .dark ? Color(hex: "#FFFFFF") : Color(hex: "#000000"))
+                        }
+                      }
                     }).padding(20)
                       .frame(height: 40, alignment: .center)
                       .background(RoundedRectangle(cornerRadius: 5)
-                        .fill(Color.white)
+                        .fill(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String)) : Color(hex: (colorConfigOptions!["primaryLight"] as! String)))
                         .shadow(color: .gray, radius: 1.5, x: 0, y: 0.5))
                     
                     Spacer()
@@ -223,7 +231,7 @@ public struct MainScreenView: View {
             }.frame(
               maxWidth: .infinity,
               maxHeight: .infinity
-            ).background(Color.white)
+            ).background(colorScheme == .dark ? Color(hex: (colorConfigOptions!["backgroundDark"] as! String)) : Color(hex: (colorConfigOptions!["backgroundLight"] as! String)) )
               .zIndex(1)
           }
         }.onAppear {
@@ -302,6 +310,7 @@ public struct MainScreenView: View {
         }
         /** Close Verification  Screen Layout**/
       }
+      .background(colorScheme == .dark ? Color(hex: (colorConfigOptions!["backgroundDark"] as! String)) : Color(hex: (colorConfigOptions!["backgroundLight"] as! String)) )
       .frame(
         maxWidth: .infinity,
         maxHeight: .infinity,
@@ -309,8 +318,7 @@ public struct MainScreenView: View {
       )
       
     }
-    .background(Color.white)
-    //.background(colorScheme == .dark ? Color(hex: colorConfigOptions!["backgroundDark"] as! String) : Color(hex: colorConfigOptions!["backgroundLight"] as! String))
+    .background(colorScheme == .dark ? Color(hex: (colorConfigOptions!["backgroundDark"] as! String)) : Color(hex: (colorConfigOptions!["backgroundLight"] as! String)) )
     
   }
 }
