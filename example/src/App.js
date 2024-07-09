@@ -14,6 +14,7 @@ export default function App() {
         let items = JSON.stringify({
             debug : false,
             sessionId : '',
+            accessToken : "",
             /* welcomeScreenConfig : {
                 hideScreen: false,
                 proceedButtonText : "",

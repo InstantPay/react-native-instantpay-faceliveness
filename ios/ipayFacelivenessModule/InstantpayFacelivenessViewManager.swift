@@ -34,6 +34,7 @@ class InstantpayFacelivenessView : UIView {
   let defaultOptions : [String:Any] = [
     "debug" : false,
     "sessionId": "",
+    "accessToken": "",
     "welcomeScreenConfig" : [
       "hideScreen" : false,
       "proceedButtonText" :  "Proceed Liveness Check",
@@ -79,18 +80,21 @@ class InstantpayFacelivenessView : UIView {
   }
   
   private func setupView() {
-    logPrint("Loading")
+    //logPrint("Loading")
     //dataStore.options = defaultOptions
     // Customize your view setup here
     //self.backgroundColor = .green // Example: Set background color to green
     
     // Configure Amplify
     do {
-      try Amplify.add(plugin: AWSCognitoAuthPlugin())
-      try Amplify.configure()
-      print("Amplify configured successfully")
+      //try Amplify.add(plugin: AWSCognitoAuthPlugin())
+      //try Amplify.configure()
+      
+      //try Amplify.add(plugin: AWSCognitoAuthPlugin())
+      //try Amplify.configure(with: .amplifyOutputs)
+      //print("Amplify configured successfully")
     } catch {
-      print("Failed to configure Amplify \(error)")
+      //print("Failed to configure Amplify \(error)")
     }
     
     let vc = UIHostingController(rootView: MainScreenView().environmentObject(dataStore))
@@ -107,7 +111,7 @@ class InstantpayFacelivenessView : UIView {
         return
       }
       
-      logPrint("Get Options : \(parseOptions)")
+      //logPrint("Get Options : \(parseOptions)")
       
       var defaultOptionsList = defaultOptions
       
@@ -120,6 +124,10 @@ class InstantpayFacelivenessView : UIView {
       
       if(parseOptions.keys.contains("sessionId") && (parseOptions["sessionId"] as! String) != ""){
         defaultOptionsList["sessionId"] = parseOptions["sessionId"] as! String
+      }
+      
+      if(parseOptions.keys.contains("accessToken") && (parseOptions["accessToken"] as! String) != ""){
+        defaultOptionsList["accessToken"] = parseOptions["accessToken"] as! String
       }
       
       //Start Welcomse Screen Config
@@ -260,7 +268,7 @@ class InstantpayFacelivenessView : UIView {
       defaultOptionsList["config"] = defaultConfig
       //End End Screen Config
       
-      logPrint("Default Options : \(defaultOptionsList)")
+      //logPrint("Default Options : \(defaultOptionsList)")
       
       dataStore.options = defaultOptionsList
     }

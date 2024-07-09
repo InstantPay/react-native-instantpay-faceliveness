@@ -10,7 +10,6 @@
 		00E356F31AD99517003FC87E /* InstantpayFacelivenessExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* InstantpayFacelivenessExampleTests.m */; };
 		0C80B921A6F3F58F76C31292 /* libPods-InstantpayFacelivenessExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-InstantpayFacelivenessExample.a */; };
 		10EBF3E22C22AFBF007A239B /* FaceLiveness in Frameworks */ = {isa = PBXBuildFile; productRef = 10EBF3E12C22AFBF007A239B /* FaceLiveness */; };
-		10EBF3F82C22B438007A239B /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 10EBF3F32C22B438007A239B /* amplifyconfiguration.json */; };
 		10EBF3F92C22B438007A239B /* InstantpayFacelivenessViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 10EBF3F42C22B438007A239B /* InstantpayFacelivenessViewManager.m */; };
 		10EBF3FA2C22B438007A239B /* InstantpayFacelivenessViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBF3F52C22B438007A239B /* InstantpayFacelivenessViewManager.swift */; };
 		10EBF3FB2C22B438007A239B /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EBF3F62C22B438007A239B /* MainScreenView.swift */; };
@@ -36,7 +35,6 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* InstantpayFacelivenessExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstantpayFacelivenessExampleTests.m; sourceTree = "<group>"; };
 		10BEC73E2C16E5C40073BD4D /* InstantpayFacelivenessExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InstantpayFacelivenessExample-Bridging-Header.h"; sourceTree = "<group>"; };
-		10EBF3F32C22B438007A239B /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		10EBF3F42C22B438007A239B /* InstantpayFacelivenessViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstantpayFacelivenessViewManager.m; sourceTree = "<group>"; };
 		10EBF3F52C22B438007A239B /* InstantpayFacelivenessViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantpayFacelivenessViewManager.swift; sourceTree = "<group>"; };
 		10EBF3F62C22B438007A239B /* MainScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 		10EBF3F72C22B438007A239B /* ipayFacelivenessModule */ = {
 			isa = PBXGroup;
 			children = (
-				10EBF3F32C22B438007A239B /* amplifyconfiguration.json */,
 				10EBF3F42C22B438007A239B /* InstantpayFacelivenessViewManager.m */,
 				10EBF3F52C22B438007A239B /* InstantpayFacelivenessViewManager.swift */,
 				10EBF3F62C22B438007A239B /* MainScreenView.swift */,
@@ -273,7 +270,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				10EBF3F82C22B438007A239B /* amplifyconfiguration.json in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
