@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+//import React, { useEffect } from 'react';
 import {
      requireNativeComponent,
      UIManager,
@@ -12,10 +12,10 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-type possibleOptions = {
+/* type possibleOptions = {
      debug : boolean;
      sessionId : string;
-}
+} */
 
 type InstantpayFacelivenessProps = {
      color: string;
