@@ -1,0 +1,13 @@
+Facelivenss Issue Resolver : 
+
+Problem: 
+If Error Show (This version (1.2.0) of the Compose Compiler requires Kotlin version 1.7.0 but you appear to be using Kotlin version 1.8.0 which is not known to be compatible)
+
+Resolve : 
+By Going to below link then the proper Compose Compiler Version with kotlin verions and change 
+    link : https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.1'
+    }
+
+
