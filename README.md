@@ -32,10 +32,10 @@ npm install react-native-instantpay-faceliveness
         titleColor : "#000000", 
         hideCloseButton : false,
         color : {
-            primaryLight : "#7DD6E8",
-            onPrimaryLight : "#FFFFFF",
-            backgroundLight : "#FFFFFF",
-            onBackgroundLight : "#000000",
+            primaryLight : "#7DD6E8", // Primary color; eg: set on button color background
+            onPrimaryLight : "#FFFFFF", // on screen button text color
+            backgroundLight : "#FFFFFF", // on screen background
+            onBackgroundLight : "#000000", // on screen Text Color
             primaryDark : "#047D95",
             onPrimaryDark : "#FAFAFA",
             backgroundDark : "#FAFAFA",

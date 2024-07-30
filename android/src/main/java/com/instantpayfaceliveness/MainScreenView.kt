@@ -171,8 +171,13 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
             facelivenessOptions.put("accessToken", items.getString("accessToken"))
         }
 
-        var primaryColor: String = ""
+        var titleColor: String = ""
+
+        var btnBackgroundColor:String = ""
+        var btnTextColor:String = ""
         var backgroundColor: String = ""
+        var textColor:String = ""
+
 
         //Config options
         if (items.has("config")){
@@ -194,9 +199,13 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
             if(itemConfigParam.has("titleColor") && itemConfigParam.getString("titleColor").isNotEmpty()){
 
                 binding.titleTextView.setTextColor(android.graphics.Color.parseColor(itemConfigParam.getString("titleColor")))
+
+                titleColor = itemConfigParam.getString("titleColor")
             }
             else{
                 binding.titleTextView.setTextColor(android.graphics.Color.parseColor(defaultConfigParam?.get("titleColor").toString()))
+
+                titleColor = defaultConfigParam?.get("titleColor").toString()
             }
 
             if(itemConfigParam.has("hideCloseButton") && itemConfigParam.getBoolean("hideCloseButton")){
@@ -235,9 +244,11 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
             }
 
             var lightOnPrimary  = Color(android.graphics.Color.parseColor(defaultColorConfig?.get("onPrimaryLight").toString()))
+            var lightOnPrimaryHex = defaultColorConfig?.get("onPrimaryLight")
 
             if(itemColorConfig.has("onPrimaryLight") && itemColorConfig.getString("onPrimaryLight").isNotEmpty()){
                 lightOnPrimary = Color(android.graphics.Color.parseColor(itemColorConfig.getString("onPrimaryLight").toString()))
+                lightOnPrimaryHex = itemColorConfig.getString("onPrimaryLight")
             }
 
             var lightBackground  = Color(android.graphics.Color.parseColor(defaultColorConfig?.get("backgroundLight").toString()))
@@ -249,9 +260,11 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
             }
 
             var lightOnBackground  = Color(android.graphics.Color.parseColor(defaultColorConfig?.get("onBackgroundLight").toString()))
+            var lightOnBackgroundHex = defaultColorConfig?.get("onBackgroundLight")
 
             if(itemColorConfig.has("onBackgroundLight") && itemColorConfig.getString("onBackgroundLight").isNotEmpty()){
                 lightOnBackground = Color(android.graphics.Color.parseColor(itemColorConfig.getString("onBackgroundLight").toString()))
+                lightOnBackgroundHex = itemColorConfig.getString("onBackgroundLight")
             }
 
             //Dark Color Started
@@ -264,9 +277,11 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
             }
 
             var darkOnPrimary  = Color(android.graphics.Color.parseColor(defaultColorConfig?.get("onPrimaryDark").toString()))
+            var darkOnPrimaryHex = defaultColorConfig?.get("onPrimaryDark")
 
             if(itemColorConfig.has("onPrimaryDark") && itemColorConfig.getString("onPrimaryDark").isNotEmpty()){
                 darkOnPrimary = Color(android.graphics.Color.parseColor(itemColorConfig.getString("onPrimaryDark").toString()))
+                darkOnPrimaryHex = itemColorConfig.getString("onPrimaryDark")
             }
 
             var darkBackground  = Color(android.graphics.Color.parseColor(defaultColorConfig?.get("backgroundDark").toString()))
@@ -277,17 +292,32 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
             }
 
             var darkOnBackground  = Color(android.graphics.Color.parseColor(defaultColorConfig?.get("onBackgroundDark").toString()))
+            var darkOnBackgroundHex = defaultColorConfig?.get("onBackgroundDark")
 
             if(itemColorConfig.has("onBackgroundDark") && itemColorConfig.getString("onBackgroundDark").isNotEmpty()){
                 darkOnBackground = Color(android.graphics.Color.parseColor(itemColorConfig.getString("onBackgroundDark").toString()))
+                darkOnBackgroundHex = itemColorConfig.getString("onBackgroundDark")
             }
 
             if (isDarkMode(context)) {
-                primaryColor = darkPrimaryHex.toString()
+
                 backgroundColor = darkBackgroundHex.toString()
+
+                textColor = darkOnBackgroundHex.toString()
+
+                btnBackgroundColor = darkPrimaryHex.toString()
+
+                btnTextColor = darkOnPrimaryHex.toString()
+
             } else {
-                primaryColor = lightPrimaryHex.toString()
+
                 backgroundColor = lightBackgroundHex.toString()
+
+                textColor = lightOnBackgroundHex.toString()
+
+                btnBackgroundColor = lightPrimaryHex.toString()
+
+                btnTextColor =  lightOnPrimaryHex.toString()
             }
 
             LightColorScheme = lightColorScheme(
@@ -309,17 +339,17 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
         //Welcome Screen Config
         if(items.has("welcomeScreenConfig")){
 
-            val colorCodeForBtn = android.graphics.Color.parseColor(primaryColor)
+            val colorCodeForBtn = android.graphics.Color.parseColor(btnBackgroundColor)
 
             binding.startFacelivenessButton.backgroundTintList = ColorStateList.valueOf(colorCodeForBtn)
 
+            binding.startFacelivenessButton.setTextColor(android.graphics.Color.parseColor(btnTextColor))
+
             if (isColorDark(colorCodeForBtn)) {
                 //Dark Color
-                binding.startFacelivenessButton.setTextColor(android.graphics.Color.parseColor("#FFFFFF"))
 
             } else {
                 //Light Color
-                binding.startFacelivenessButton.setTextColor(android.graphics.Color.parseColor("#000000"))
             }
 
             val colorCodeForScreenBackground = android.graphics.Color.parseColor(backgroundColor)
@@ -328,24 +358,20 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
 
             val closeIcon = ContextCompat.getDrawable(context, R.drawable.ic_close_24)
 
+            closeIcon?.setColorFilter(android.graphics.Color.parseColor(titleColor), PorterDuff.Mode.SRC_IN)
+
+            binding.closeButton.setImageDrawable(closeIcon)
+
+            binding.descriptionTextview.setTextColor(android.graphics.Color.parseColor("#66${textColor.replace("#","")}"))
+
+            binding.imageTitle.setTextColor(android.graphics.Color.parseColor(textColor))
+
             if (isColorDark(colorCodeForScreenBackground)) {
 
-                binding.descriptionTextview.setTextColor(android.graphics.Color.parseColor("#66FFFFFF"))
-
-                binding.imageTitle.setTextColor(android.graphics.Color.parseColor("#FFFFFF"))
-
-                closeIcon?.setColorFilter(android.graphics.Color.parseColor("#FFFFFF"), PorterDuff.Mode.SRC_IN)
             }
             else{
 
-                binding.descriptionTextview.setTextColor(android.graphics.Color.parseColor("#66000000"))
-
-                binding.imageTitle.setTextColor(android.graphics.Color.parseColor("#000000"))
-
-                closeIcon?.setColorFilter(android.graphics.Color.parseColor("#000000"), PorterDuff.Mode.SRC_IN)
             }
-
-            binding.closeButton.setImageDrawable(closeIcon)
 
             val defaultWelComeScreenConfig = (facelivenessOptions["welcomeScreenConfig"] as? MutableMap<Any, Any>)
 
@@ -424,11 +450,13 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
                 textView1.layoutParams = textLayoutParams
                 textView1.text = (index+1).toString()+". "
 
+                textView1.setTextColor(android.graphics.Color.parseColor("#70${textColor.replace("#","")}"))
+
                 if (isColorDark(colorCodeForScreenBackground)) {
-                    textView1.setTextColor(android.graphics.Color.parseColor("#70FFFFFF"))
+
                 }
                 else{
-                    textView1.setTextColor(android.graphics.Color.parseColor("#70000000"))
+
                 }
 
                 linearLayout.addView(textView1)
@@ -437,11 +465,13 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
                 textView2.layoutParams = textLayoutParams
                 textView2.text = value.toString()
 
+                textView2.setTextColor(android.graphics.Color.parseColor("#70${textColor.replace("#","")}"))
+
                 if (isColorDark(colorCodeForScreenBackground)) {
-                    textView2.setTextColor(android.graphics.Color.parseColor("#70FFFFFF"))
+
                 }
                 else{
-                    textView2.setTextColor(android.graphics.Color.parseColor("#70000000"))
+
                 }
 
                 linearLayout.addView(textView2)
