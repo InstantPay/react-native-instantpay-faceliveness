@@ -1,3 +1,6 @@
+/*
+//Please uncomment when want to use
+ 
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
 #import <React/RCTViewManager.h>
@@ -16,3 +19,4 @@ RCT_EXPORT_VIEW_PROPERTY(onSuccessCallback, RCTBubblingEventBlock)
 
 
 @end
+*/

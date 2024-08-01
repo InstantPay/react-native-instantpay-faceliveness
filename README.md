@@ -8,6 +8,19 @@ Face Liveness verifies that only real users, not bad actors using spoofs, can ac
 npm install react-native-instantpay-faceliveness
 ```
 
+## Configuration for iOS
+
+Please install the Swift package by following these steps:
+
+1. Go to File -> Add Package.
+2. In the search bar, enter the following URL: https://github.com/aws-amplify/amplify-ui-swift-liveness, and press Enter.
+3. Wait for the results to load. Once the Amplify UI Swift Liveness repository appears, you’ll see options to select the version of Liveness you want to install.
+4. Choose the "Up to Next Major Version" option, which will install the latest compatible version of the dependency.
+5. Click Add Package.
+6. In the next screen, select the FaceLiveness product, and click Add Package.
+
+Next, copy the folder from node_modules/react-native-instantpay-faceliveness/ios/ipayFacelivenessModule and link it to your iOS project. Be sure to remove the comments (/.../) before using the code.
+
 ## Usage
 
 ```js

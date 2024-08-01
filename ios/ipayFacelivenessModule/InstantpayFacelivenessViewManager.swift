@@ -1,3 +1,6 @@
+/*
+//Please uncomment when want to use
+
 import UIKit
 import SwiftUI
 import Amplify
@@ -99,6 +102,7 @@ class InstantpayFacelivenessView : UIView {
     
     let vc = UIHostingController(rootView: MainScreenView().environmentObject(dataStore))
     //vc.view.backgroundColor = UIColor.red
+    vc.view.backgroundColor = UIColor.clear
     vc.view.frame = bounds
     self.addSubview(vc.view)
     self.returningView = vc.view
@@ -347,4 +351,4 @@ class InstantpayFacelivenessView : UIView {
     self.returningView?.frame = bounds
   }
   
-}
+}*/

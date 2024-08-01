@@ -4,8 +4,9 @@
 //
 //  Created by Dhananjay Kumar on 10/06/24.
 //
+//Please uncomment when want to use
 
-import SwiftUI
+/*import SwiftUI
 import FaceLiveness
 import Amplify
 import AWSClientRuntime
@@ -125,9 +126,9 @@ public struct MainScreenView: View {
                     .padding(.bottom, 10)
                     .apply{
                       if #available(iOS 17.0, *) {
-                        $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.5) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.5))
+                        $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["onBackgroundDark"] as! String), opacity: 0.5) : Color(hex: (colorConfigOptions!["onBackgroundLight"] as! String), opacity: 0.5))
                       } else {
-                        $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.5) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.5))
+                        $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["onBackgroundDark"] as! String), opacity: 0.5) : Color(hex: (colorConfigOptions!["onBackgroundLight"] as! String), opacity: 0.5))
                       }
                     }
                   
@@ -135,9 +136,9 @@ public struct MainScreenView: View {
                     .padding(.bottom, 3)
                     .apply{
                       if #available(iOS 17.0, *) {
-                        $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String)) : Color(hex: (colorConfigOptions!["primaryLight"] as! String)))
+                        $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["onBackgroundDark"] as! String)) : Color(hex: (colorConfigOptions!["onBackgroundLight"] as! String)))
                       } else {
-                        $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String)) : Color(hex: (colorConfigOptions!["primaryLight"] as! String)))
+                        $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["onBackgroundDark"] as! String)) : Color(hex: (colorConfigOptions!["onBackgroundLight"] as! String)))
                       }
                     }
                   
@@ -184,16 +185,16 @@ public struct MainScreenView: View {
                     HStack(alignment: .top){
                       Text("\(index+1).").apply{
                         if #available(iOS 17.0, *) {
-                          $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.9))
+                          $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["onBackgroundDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["onBackgroundLight"] as! String), opacity: 0.9))
                         } else {
-                          $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.9))
+                          $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["onBackgroundDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["onBackgroundLight"] as! String), opacity: 0.9))
                         }
                       }
                       Text("\((welcomeScreenOptions?["instructionPoint"] as! Array<String>)[index])").apply{
                         if #available(iOS 17.0, *) {
-                          $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.9))
+                          $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["onBackgroundDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["onBackgroundLight"] as! String), opacity: 0.9))
                         } else {
-                          $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["primaryDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["primaryLight"] as! String), opacity: 0.9))
+                          $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["onBackgroundDark"] as! String), opacity: 0.9) : Color(hex: (colorConfigOptions!["onBackgroundLight"] as! String), opacity: 0.9))
                         }
                       }
                     }.padding(.bottom,0.1)
@@ -210,9 +211,9 @@ public struct MainScreenView: View {
                     }, label: {
                       Text("\(welcomeScreenOptions?["proceedButtonText"] as! String)").apply{
                         if #available(iOS 17.0, *) {
-                          $0.foregroundStyle(colorScheme == .dark ? Color(hex: "#FFFFFF") : Color(hex: "#000000"))
+                          $0.foregroundStyle(colorScheme == .dark ? Color(hex: (colorConfigOptions!["onPrimaryDark"] as! String)) : Color(hex: (colorConfigOptions!["onPrimaryLight"] as! String)))
                         } else {
-                          $0.foregroundColor(colorScheme == .dark ? Color(hex: "#FFFFFF") : Color(hex: "#000000"))
+                          $0.foregroundColor(colorScheme == .dark ? Color(hex: (colorConfigOptions!["onPrimaryDark"] as! String)) : Color(hex: (colorConfigOptions!["onPrimaryLight"] as! String)))
                         }
                       }
                     }).padding(20)
@@ -418,4 +419,4 @@ struct MyCredentialsProvider : AWSCredentialsProvider {
       throw AuthError.sessionExpired("Failed to Decode accessToken", "Please check your accessToken and try again.")
     }
   }
-}
+}*/

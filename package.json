@@ -1,6 +1,6 @@
 {
   "name": "react-native-instantpay-faceliveness",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Face Liveness verifies that only real users, not bad actors using spoofs, can access your services",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -37,7 +37,11 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "kyc",
+    "faceliveness",
+    "InstantPay",
+    "ipay"
   ],
   "repository": {
     "type": "git",
