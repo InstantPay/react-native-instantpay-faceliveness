@@ -1,7 +1,7 @@
 import { codegenNativeComponent, type ViewProps } from 'react-native';
 
 interface NativeProps extends ViewProps {
-  color?: string;
+    color?: string;
 }
 
 export default codegenNativeComponent<NativeProps>('InstantpayFacelivenessView');
