@@ -96,13 +96,14 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 10
+        margin: 10,
         //alignItems: 'center',
         //justifyContent: 'center',
     },
     box: {
         width: '100%',
         height: '100%',
+        borderColor: '#000000',borderWidth: 1,
         //marginVertical: 20,
     },
 });

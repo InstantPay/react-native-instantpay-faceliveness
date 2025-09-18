@@ -7,6 +7,14 @@
 
 #import "RCTFabricComponentsPlugins.h"
 
+// add this swift bridging header as a dependency
+#if __has_include("InstantpayFaceliveness/InstantpayFaceliveness-Swift.h")
+#import "InstantpayFaceliveness/InstantpayFaceliveness-Swift.h"
+#else
+#import "InstantpayFaceliveness-Swift.h"
+#endif
+//End
+
 using namespace facebook::react;
 
 @interface InstantpayFacelivenessView () <RCTInstantpayFacelivenessViewViewProtocol>
@@ -14,7 +22,8 @@ using namespace facebook::react;
 @end
 
 @implementation InstantpayFacelivenessView {
-    UIView * _view;
+    //UIView * _view;
+    InstantpayFacelivenessViewManager * _viewManager; //Added Swift Class
 }
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
@@ -28,9 +37,15 @@ using namespace facebook::react;
     static const auto defaultProps = std::make_shared<const InstantpayFacelivenessViewProps>();
     _props = defaultProps;
 
-    _view = [[UIView alloc] init];
-
-    self.contentView = _view;
+    //_view = [[UIView alloc] init];
+    _viewManager = [[InstantpayFacelivenessViewManager alloc] init]; //Init Swift Class
+      
+    //self.contentView = _view;
+    self.contentView = [_viewManager getView]; //Add Swift Class to view
+      
+      _viewManager.responseCallback = ^(NSString* actionType, NSDictionary<NSString *, id>* eventData) {
+        [self handleSubmit:actionType eventData:eventData];
+      };
   }
 
   return self;
@@ -40,11 +55,32 @@ using namespace facebook::react;
 {
     const auto &oldViewProps = *std::static_pointer_cast<InstantpayFacelivenessViewProps const>(_props);
     const auto &newViewProps = *std::static_pointer_cast<InstantpayFacelivenessViewProps const>(props);
-
-    if (oldViewProps.color != newViewProps.color) {
+    
+    //Commented coz swift class using
+    /*if (oldViewProps.color != newViewProps.color) {
         NSString * colorToConvert = [[NSString alloc] initWithUTF8String: newViewProps.color.c_str()];
         [_view setBackgroundColor:[self hexStringToColor:colorToConvert]];
+    }*/
+    
+    if(oldViewProps.options != newViewProps.options) {
+        NSString* newOptions = [[NSString alloc] initWithUTF8String: newViewProps.options.c_str()];
+
+        [_viewManager updateOptionsWithNewOptions:newOptions]; // updating options property
     }
+
+    /*if(oldViewProps.options != newViewProps.options) {
+        NSMutableArray<NSNumber*>* newOptions = [[NSMutableArray alloc] init];
+
+        // parsing options values to NSMutableArray<NSNumber*>*
+        for (double option : newViewProps.options) {
+            [newOptions addObject:@(option)];
+        }
+
+        [_manager updateOptionsWithNewOptions:newOptions]; // updating options
+    }*/
+    
+    
+
 
     [super updateProps:props oldProps:oldProps];
 }
@@ -54,7 +90,7 @@ Class<RCTComponentViewProtocol> InstantpayFacelivenessViewCls(void)
     return InstantpayFacelivenessView.class;
 }
 
-- hexStringToColor:(NSString *)stringToConvert
+/*- hexStringToColor:(NSString *)stringToConvert
 {
     NSString *noHashString = [stringToConvert stringByReplacingOccurrencesOfString:@"#" withString:@""];
     NSScanner *stringScanner = [NSScanner scannerWithString:noHashString];
@@ -66,6 +102,40 @@ Class<RCTComponentViewProtocol> InstantpayFacelivenessViewCls(void)
     int b = (hex) & 0xFF;
 
     return [UIColor colorWithRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
-}
+}*/
 
+- (void)handleSubmit:(NSString*)actionType eventData:(NSDictionary<NSString *, id> *)eventData
+{
+    if(!_eventEmitter) {
+        return;
+    }
+    
+    if([actionType  isEqual: @"CANCELED"]){
+        //React side onCancelCallback fn but here OnCancelCallback
+        InstantpayFacelivenessViewEventEmitter::OnCancelCallback cancelEvent = {
+            .message = [eventData[@"message"] UTF8String]
+        };
+        
+        std::dynamic_pointer_cast<const InstantpayFacelivenessViewEventEmitter>(self->_eventEmitter)->onCancelCallback(cancelEvent);
+    }
+    else if([actionType  isEqual: @"ERRORED"]){
+        //React side onErrorCallback fn but here OnErrorCallback
+        InstantpayFacelivenessViewEventEmitter::OnErrorCallback errorEvent = {
+            .errorMessage = [eventData[@"errorMessage"] UTF8String],
+            .errorCause = [eventData[@"errorCause"] UTF8String],
+            .recoverySuggestion = [eventData[@"recoverySuggestion"] UTF8String],
+        };
+        
+        std::dynamic_pointer_cast<const InstantpayFacelivenessViewEventEmitter>(self->_eventEmitter)->onErrorCallback(errorEvent);
+    }
+    else if([actionType  isEqual: @"SUCCESS"]){
+        //React side onSuccessCallback fn but here OnSuccessCallback
+        InstantpayFacelivenessViewEventEmitter::OnSuccessCallback successEvent = {
+            .sessionId = [eventData[@"sessionId"] UTF8String]
+        };
+        
+        std::dynamic_pointer_cast<const InstantpayFacelivenessViewEventEmitter>(self->_eventEmitter)->onSuccessCallback(successEvent);
+    }
+    
+}
 @end

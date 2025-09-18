@@ -13,9 +13,21 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => min_ios_version_supported }
   s.source       = { :git => "https://github.com/InstantPay/react-native-instantpay-faceliveness.git", :tag => "#{s.version}" }
 
-  s.source_files = "ios/**/*.{h,m,mm,cpp,swift}"
+  s.source_files = "ios/**/*.{h,m,mm,cpp,swift}" # 👈 include Swift
   s.private_header_files = "ios/**/*.h"
+  #s.requires_arc = true
+  #s.swift_version = "5.0" # 👇 tells CocoaPods to use Swift
 
+  # React Native dependencies
+  #s.dependency "React-Core"
+
+  # 👇 ensures Swift runtime is embedded for consumers
+  s.pod_target_xcconfig = {
+    #'DEFINES_MODULE' => 'YES',
+    #'SWIFT_OBJC_BRIDGING_HEADER' => '$(PODS_TARGET_SRCROOT)/ios/InstantpayFaceliveness-Bridging-Header.h', 
+    #'SWIFT_OBJC_INTERFACE_HEADER_NAME' => 'InstantpayFaceliveness-Swift.h',
+    #'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'YES'
+  }
 
   install_modules_dependencies(s)
 end
