@@ -2,9 +2,9 @@ import SwiftUI
 
 class MyDataStore: ObservableObject {
     @Published var options: [String: Any] = [:]
-    //@Published var onErrorCallbackEvent: RCTBubblingEventBlock = {_ in }
+    @Published var onErrorCallbackEvent: (([String: Any]) -> Void) = {_ in }
     @Published var onCancelCallbackEvent: (([String: Any]) -> Void) = {_ in }
-    //@Published var onSuccessCallbackEvent: RCTBubblingEventBlock = {_ in }
+    @Published var onSuccessCallbackEvent: (([String: Any]) -> Void) = {_ in }
 }
 
 @objc public class InstantpayFacelivenessViewManager: NSObject {

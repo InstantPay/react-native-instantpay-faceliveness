@@ -78,10 +78,6 @@ using namespace facebook::react;
 
         [_manager updateOptionsWithNewOptions:newOptions]; // updating options
     }*/
-    
-    
-
-
     [super updateProps:props oldProps:oldProps];
 }
 
