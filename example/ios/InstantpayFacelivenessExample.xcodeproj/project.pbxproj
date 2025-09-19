@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1032A6592E7D6A8100D2415B /* InstantpayFacelivenessExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InstantpayFacelivenessExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* InstantpayFacelivenessExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantpayFacelivenessExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = InstantpayFacelivenessExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = InstantpayFacelivenessExample/Info.plist; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 		13B07FAE1A68108700A75B9A /* InstantpayFacelivenessExample */ = {
 			isa = PBXGroup;
 			children = (
+				1032A6592E7D6A8100D2415B /* InstantpayFacelivenessExample-Bridging-Header.h */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -133,7 +135,7 @@
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 2600;
 					};
 				};
 			};
@@ -268,6 +270,10 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = W66539NDBT;
 				ENABLE_BITCODE = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = InstantpayFacelivenessExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -282,6 +288,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = instantpayfaceliveness.example;
 				PRODUCT_NAME = InstantpayFacelivenessExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "InstantpayFacelivenessExample-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -311,6 +319,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = instantpayfaceliveness.example;
 				PRODUCT_NAME = InstantpayFacelivenessExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "InstantpayFacelivenessExample-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

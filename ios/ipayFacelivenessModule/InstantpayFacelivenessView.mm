@@ -1,3 +1,4 @@
+/*
 #import "InstantpayFacelivenessView.h"
 
 #import <react/renderer/components/InstantpayFacelivenessViewSpec/ComponentDescriptors.h>
@@ -5,15 +6,23 @@
 #import <react/renderer/components/InstantpayFacelivenessViewSpec/Props.h>
 #import <react/renderer/components/InstantpayFacelivenessViewSpec/RCTComponentViewHelpers.h>
 
+#if __has_include("React/RCTFabricComponentsPlugins.h")
+#import "React/RCTFabricComponentsPlugins.h"
+#elif __has_include("RCTFabricComponentsPlugins.h")
 #import "RCTFabricComponentsPlugins.h"
+#endif
 
 // add this swift bridging header as a dependency
-#if __has_include("InstantpayFaceliveness/InstantpayFaceliveness-Swift.h")
-#import "InstantpayFaceliveness/InstantpayFaceliveness-Swift.h"
-#else
+//#import "<PRODUCT_MODULE_NAME-Swift.h>" change PRODUCT_MODULE_NAME as per project
+#if __has_include("InstantpayFaceliveness-Swift.h")
 #import "InstantpayFaceliveness-Swift.h"
+#elif __has_include("InstantpayFacelivenessExample-Swift.h")
+#import "InstantpayFacelivenessExample-Swift.h"
+#elif __has_include("instantpay-Swift.h")
+#import "instantpay-Swift.h"
+#elif __has_include("InstantpayFaceliveness/InstantpayFaceliveness-Swift.h")
+#import "InstantpayFaceliveness/InstantpayFaceliveness-Swift.h"
 #endif
-//End
 
 using namespace facebook::react;
 
@@ -33,22 +42,22 @@ using namespace facebook::react;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-  if (self = [super initWithFrame:frame]) {
-    static const auto defaultProps = std::make_shared<const InstantpayFacelivenessViewProps>();
-    _props = defaultProps;
+    if (self = [super initWithFrame:frame]) {
+        static const auto defaultProps = std::make_shared<const InstantpayFacelivenessViewProps>();
+        _props = defaultProps;
 
-    //_view = [[UIView alloc] init];
-    _viewManager = [[InstantpayFacelivenessViewManager alloc] init]; //Init Swift Class
-      
-    //self.contentView = _view;
-    self.contentView = [_viewManager getView]; //Add Swift Class to view
-      
-      _viewManager.responseCallback = ^(NSString* actionType, NSDictionary<NSString *, id>* eventData) {
-        [self handleSubmit:actionType eventData:eventData];
-      };
-  }
+        //_view = [[UIView alloc] init];
+        _viewManager = [[InstantpayFacelivenessViewManager alloc] init]; //Init Swift Class
+        
+        //self.contentView = _view;
+        self.contentView = [_viewManager getView]; //Add Swift Class to view
+        
+        _viewManager.responseCallback = ^(NSString* actionType, NSDictionary<NSString *, id>* eventData) {
+            [self handleSubmit:actionType eventData:eventData];
+        };
+    }
 
-  return self;
+    return self;
 }
 
 - (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
@@ -57,10 +66,10 @@ using namespace facebook::react;
     const auto &newViewProps = *std::static_pointer_cast<InstantpayFacelivenessViewProps const>(props);
     
     //Commented coz swift class using
-    /*if (oldViewProps.color != newViewProps.color) {
-        NSString * colorToConvert = [[NSString alloc] initWithUTF8String: newViewProps.color.c_str()];
-        [_view setBackgroundColor:[self hexStringToColor:colorToConvert]];
-    }*/
+    //if (oldViewProps.color != newViewProps.color) {
+    //    NSString * colorToConvert = [[NSString alloc] initWithUTF8String: newViewProps.color.c_str()];
+    //    [_view setBackgroundColor:[self hexStringToColor:colorToConvert]];
+    //}
     
     if(oldViewProps.options != newViewProps.options) {
         NSString* newOptions = [[NSString alloc] initWithUTF8String: newViewProps.options.c_str()];
@@ -68,16 +77,17 @@ using namespace facebook::react;
         [_viewManager updateOptionsWithNewOptions:newOptions]; // updating options property
     }
 
-    /*if(oldViewProps.options != newViewProps.options) {
-        NSMutableArray<NSNumber*>* newOptions = [[NSMutableArray alloc] init];
+    // if(oldViewProps.options != newViewProps.options) {
+    //     NSMutableArray<NSNumber*>* newOptions = [[NSMutableArray alloc] init];
 
-        // parsing options values to NSMutableArray<NSNumber*>*
-        for (double option : newViewProps.options) {
-            [newOptions addObject:@(option)];
-        }
+    //     // parsing options values to NSMutableArray<NSNumber*>*
+    //     for (double option : newViewProps.options) {
+    //         [newOptions addObject:@(option)];
+    //     }
 
-        [_manager updateOptionsWithNewOptions:newOptions]; // updating options
-    }*/
+    //     [_manager updateOptionsWithNewOptions:newOptions]; // updating options
+    // }
+    
     [super updateProps:props oldProps:oldProps];
 }
 
@@ -86,19 +96,19 @@ Class<RCTComponentViewProtocol> InstantpayFacelivenessViewCls(void)
     return InstantpayFacelivenessView.class;
 }
 
-/*- hexStringToColor:(NSString *)stringToConvert
-{
-    NSString *noHashString = [stringToConvert stringByReplacingOccurrencesOfString:@"#" withString:@""];
-    NSScanner *stringScanner = [NSScanner scannerWithString:noHashString];
+// - hexStringToColor:(NSString *)stringToConvert
+// {
+//     NSString *noHashString = [stringToConvert stringByReplacingOccurrencesOfString:@"#" withString:@""];
+//     NSScanner *stringScanner = [NSScanner scannerWithString:noHashString];
 
-    unsigned hex;
-    if (![stringScanner scanHexInt:&hex]) return nil;
-    int r = (hex >> 16) & 0xFF;
-    int g = (hex >> 8) & 0xFF;
-    int b = (hex) & 0xFF;
+//     unsigned hex;
+//     if (![stringScanner scanHexInt:&hex]) return nil;
+//     int r = (hex >> 16) & 0xFF;
+//     int g = (hex >> 8) & 0xFF;
+//     int b = (hex) & 0xFF;
 
-    return [UIColor colorWithRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
-}*/
+//     return [UIColor colorWithRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
+// }
 
 - (void)handleSubmit:(NSString*)actionType eventData:(NSDictionary<NSString *, id> *)eventData
 {
@@ -135,3 +145,4 @@ Class<RCTComponentViewProtocol> InstantpayFacelivenessViewCls(void)
     
 }
 @end
+*/

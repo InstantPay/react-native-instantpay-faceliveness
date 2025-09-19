@@ -81,6 +81,7 @@ export default function App() {
                     
                     optionsItem!="" && showFaceliveness ?
                         <InstantpayFacelivenessView 
+                            color="#32a852"
                             style={styles.box}
                             options={optionsItem}
                             onCancelCallback={(event) => onCancelCallbackHandeler(event)}

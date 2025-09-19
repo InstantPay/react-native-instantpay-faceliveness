@@ -1,3 +1,4 @@
+/*
 import SwiftUI
 
 class MyDataStore: ObservableObject {
@@ -50,9 +51,9 @@ class MyDataStore: ObservableObject {
         dataStore.options = ["name" : "sdfdsfdsfdg"]
     }
     
-    
     func logPrint(_ value:String){
         print("\(LOGTAG)=> \(value) ")
     }
     
 }
+*/

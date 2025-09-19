@@ -20,6 +20,7 @@ interface SuccessEventData {
 }
 
 interface NativeProps extends ViewProps {
+    //color:string;
     options?: string;
     onCancelCallback?: CodegenTypes.BubblingEventHandler<Readonly<CancelEventData>>;
     onErrorCallback?: CodegenTypes.BubblingEventHandler<Readonly<ErrorEventData>>;
