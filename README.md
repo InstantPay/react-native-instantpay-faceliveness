@@ -61,6 +61,13 @@ setup_faceliveness({
 
 4. Then execute `pod install` in your `ios` directory _(📌  Note that it must be re-executed each time you update this config)_.
 
+5. Open the `YourProjectName-Bridging-Header.h` file and add Objective-C headers _(📌  Note if `YourProjectName-Bridging-Header.h` not exist then create inside Project Dir (e.g., `YourProjectName/YourProjectName-Bridging-Header.h` ) )_.
+
+```
+#import <React-RCTAppDelegate/RCTDefaultReactNativeFactoryDelegate.h>
+
+```
+
 ## Usage
 
 ```js
