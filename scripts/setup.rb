@@ -79,6 +79,25 @@ def setup_faceliveness(config)
     end
     log("🧹 Cleaned comment lines in #{dest}", "success")
 
+    #Add Target Swift header in .mm file
+    Dir.glob("#{dest}/**/*.{h,m,mm,swift}") do |file|
+        if file.include?("InstantpayFacelivenessView.mm")
+            #log("🔍 Processing file #{file}", "info")
+            lines = File.readlines(file)
+            # Find the index of the marker line
+            marker_index = lines.find_index { |l| l.include?("//Add more swift bridging header") }
+            if marker_index
+                # Insert new lines just above the marker
+                insert_lines = [
+                    "#elif __has_include(\"#{$targetName}-Swift.h\")\n",
+                    "#import \"#{$targetName}-Swift.h\"\n",
+                ]
+                lines.insert(marker_index, *insert_lines)
+            end
+            File.write(file, lines.join)
+        end
+    end
+
     #3. Link into Xcode target Compile Sources
     #Dir.glob("#{dest}/**/*.{h,m,mm,swift}").each do |file|
     #    relative_path = file.sub(targetModuleDir + "/", "")

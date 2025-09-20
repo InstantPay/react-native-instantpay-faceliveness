@@ -16,12 +16,9 @@
 //#import "<PRODUCT_MODULE_NAME-Swift.h>" change PRODUCT_MODULE_NAME as per project
 #if __has_include("InstantpayFaceliveness-Swift.h")
 #import "InstantpayFaceliveness-Swift.h"
-#elif __has_include("InstantpayFacelivenessExample-Swift.h")
-#import "InstantpayFacelivenessExample-Swift.h"
-#elif __has_include("instantpay-Swift.h")
-#import "instantpay-Swift.h"
 #elif __has_include("InstantpayFaceliveness/InstantpayFaceliveness-Swift.h")
 #import "InstantpayFaceliveness/InstantpayFaceliveness-Swift.h"
+//Add more swift bridging header as per project
 #endif
 
 using namespace facebook::react;
