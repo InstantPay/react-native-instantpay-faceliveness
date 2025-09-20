@@ -1,7 +1,5 @@
 /*
 import SwiftUI
-import Amplify
-import AWSCognitoAuthPlugin
 
 class MyDataStore: ObservableObject {
     @Published var options: [String: Any] = [:]
