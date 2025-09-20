@@ -285,10 +285,16 @@ public struct MainScreenView: View {
                 switch result {
                 case .success:
                   //print("Success")
+                  hideWelcomeScreen = false
+                  hideVerificationScreen = true
+                  currentScreen = "WELCOME"
                   dataStore.onSuccessCallbackEvent(["sessionId" : optionsList["sessionId"] as! String])
                   break;
                 case .failure(let error):
                   //print("error :\(error)")
+                  hideWelcomeScreen = false
+                  hideVerificationScreen = true
+                  currentScreen = "WELCOME"
                   dataStore.onErrorCallbackEvent(["errorMessage" : error.message, "errorCause" : "", "recoverySuggestion" : error.recoverySuggestion ])
                   break;
                 }

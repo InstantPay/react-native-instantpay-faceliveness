@@ -38,7 +38,7 @@ using namespace facebook::react;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
-{
+{   //NSLog(@"♻️ Init manager");
     if (self = [super initWithFrame:frame]) {
         static const auto defaultProps = std::make_shared<const InstantpayFacelivenessViewProps>();
         _props = defaultProps;
@@ -57,8 +57,22 @@ using namespace facebook::react;
     return self;
 }
 
+//If you do not want your custom view to be recycled, you can add a static shouldBeRecycled method on the ComponentView and return NO from it. if YES then fire prepareForRecycle method
+//+ (BOOL)shouldBeRecycled
+//{
+//  return YES;
+//}
+
+//-(void)prepareForRecycle{
+//    NSLog(@"♻️ prepareForRecycle called — resetting manager");
+//    [_viewManager clearOptions];
+//    [super prepareForRecycle];
+//    
+//}
+
 - (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
-{
+{   
+    //Comment below &oldViewProps for re-init everytime
     const auto &oldViewProps = *std::static_pointer_cast<InstantpayFacelivenessViewProps const>(_props);
     const auto &newViewProps = *std::static_pointer_cast<InstantpayFacelivenessViewProps const>(props);
     
@@ -68,6 +82,7 @@ using namespace facebook::react;
     //    [_view setBackgroundColor:[self hexStringToColor:colorToConvert]];
     //}
     
+    //Comment if block if want to re-init everytime
     if(oldViewProps.options != newViewProps.options) {
         NSString* newOptions = [[NSString alloc] initWithUTF8String: newViewProps.options.c_str()];
 

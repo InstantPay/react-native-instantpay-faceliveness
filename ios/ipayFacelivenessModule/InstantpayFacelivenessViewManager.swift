@@ -255,6 +255,10 @@ class MyDataStore: ObservableObject {
         
         dataStore.options = defaultOptionsList
     }
+
+    //@objc public func clearOptions() {
+    //   logPrint("Clear Options : \(dataStore.options)")
+    //}
     
     func logPrint(_ value:String){
         print("\(LOGTAG)=> \(value) ")
