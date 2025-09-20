@@ -55,6 +55,7 @@ def setup_faceliveness(config)
 
     if target.nil?
         log("❌ Target #{$targetName} not found in #{targetModulePath}", "error")
+        exit(0)
     end
 
     remove_folder_reference(project, targetModuleDir, target, dest)
