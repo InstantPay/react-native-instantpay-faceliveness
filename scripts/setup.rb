@@ -4,7 +4,11 @@ require 'xcodeproj'
 #path to the ios directory of the project
 $targetName = "" #name of the target in the Xcode project
 
-PROJ_DIR = File.expand_path('..', __dir__)
+$projDir = File.expand_path('..', __dir__)
+
+if $projDir.include? "node_modules"
+    $projDir = File.expand_path('../../..', __dir__) #go back 3 levels if inside node_modules
+end
 
 LIB_IOS_PATH = File.expand_path("../ios", __dir__) #path to the ios directory of the library
 
@@ -12,7 +16,7 @@ LIB_IOS_PATH = File.expand_path("../ios", __dir__) #path to the ios directory of
 DEV_IOS_PATH = File.expand_path("../example/ios", __dir__)
 
 #Live Library path
-PROD_IOS_PATH = File.join(PROJ_DIR, "ios")
+PROD_IOS_PATH = File.join($projDir, "ios")
 
 COPY_FOLDER = "ipayFacelivenessModule"
 
