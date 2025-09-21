@@ -2,12 +2,7 @@
 //import type { BubblingEventHandler, DirectEventHandler } from 'react-native/Libraries/Types/CodegenTypes';
 import { type ViewProps } from 'react-native';
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
-import type {
-  Double,
-  Float,
-  BubblingEventHandler,
-  WithDefault,
-} from 'react-native/Libraries/Types/CodegenTypes';
+import type { BubblingEventHandler } from 'react-native/Libraries/Types/CodegenTypes'
 
 //BubblingEventHandler<EventType> → for events that bubble up through the view hierarchy.
 
