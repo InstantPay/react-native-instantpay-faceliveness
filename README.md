@@ -8,6 +8,37 @@ Face Liveness verifies that only real users, not bad actors using spoofs, can ac
 npm install react-native-instantpay-faceliveness
 ```
 
+## Configuration for Android
+
+Open ```app/build.gradle``` file:
+
+```
+...
+android {
+    ...
+
+    buildFeatures {
+        viewBinding = true //👈 add this
+    }
+
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true //👈 add to use of Java 8 language features and APIs
+    }
+
+    ...
+}
+
+dependencies {
+    ...
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5' //👈 add this
+}
+
+...
+
+```
+
 ## Configuration for iOS
 
 1. Please install the Swift package by following these steps:

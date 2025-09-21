@@ -78,6 +78,18 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "instantpayfaceliveness.example"
+
+    buildFeatures {
+      viewBinding = true
+      //buildConfig = true //[Extra] to Avoid the error to enable features of buildConfig
+    }
+
+    compileOptions {
+    // Flag to enable support for the new language APIs
+      coreLibraryDesugaringEnabled true //[Extra] Added to use of Java 8 language features and APIs for react-native-instantpay-facelivenes
+    }
+
+
     defaultConfig {
         applicationId "instantpayfaceliveness.example"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -116,4 +128,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+  /**** React Native instantpay faceliveness Setup Added [Extra]  ****/
+  coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+  /**** End React Native instantpay faceliveness Setup Added [Extra]  ****/
 }
