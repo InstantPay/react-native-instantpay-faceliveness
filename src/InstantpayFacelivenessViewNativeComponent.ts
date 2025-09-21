@@ -4,6 +4,11 @@ import { type ViewProps } from 'react-native';
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
 import type { BubblingEventHandler } from 'react-native/Libraries/Types/CodegenTypes'
 
+/**
+ * Fix : Could not find a declaration file for module 'react-native/Libraries/Types/CodegenTypes'.
+ * npm install --save-dev @types/react-native
+ */
+
 //BubblingEventHandler<EventType> → for events that bubble up through the view hierarchy.
 
 //DirectEventHandler<EventType> → for events that don’t bubble (fired only on the target).
