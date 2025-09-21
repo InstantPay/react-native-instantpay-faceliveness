@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
     #'DEFINES_MODULE' => 'YES',
     #'SWIFT_OBJC_BRIDGING_HEADER' => '$(PODS_TARGET_SRCROOT)/ios/InstantpayFaceliveness-Bridging-Header.h', 
     #'SWIFT_OBJC_INTERFACE_HEADER_NAME' => 'InstantpayFaceliveness-Swift.h',
-    #'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'YES'
+    #'ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES' => 'YES' 
   }
 
   install_modules_dependencies(s)
