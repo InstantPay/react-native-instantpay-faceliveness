@@ -1,6 +1,13 @@
-import { codegenNativeComponent, type ViewProps, type CodegenTypes } from 'react-native';
+//import { codegenNativeComponent, type ViewProps, type CodegenTypes } from 'react-native';
 //import type { BubblingEventHandler, DirectEventHandler } from 'react-native/Libraries/Types/CodegenTypes';
-
+import { type ViewProps } from 'react-native';
+import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
+import type {
+  Double,
+  Float,
+  BubblingEventHandler,
+  WithDefault,
+} from 'react-native/Libraries/Types/CodegenTypes';
 
 //BubblingEventHandler<EventType> → for events that bubble up through the view hierarchy.
 
@@ -22,9 +29,9 @@ interface SuccessEventData {
 interface NativeProps extends ViewProps {
     //color:string;
     options?: string;
-    onCancelCallback?: CodegenTypes.BubblingEventHandler<Readonly<CancelEventData>>;
-    onErrorCallback?: CodegenTypes.BubblingEventHandler<Readonly<ErrorEventData>>;
-    onSuccessCallback?: CodegenTypes.BubblingEventHandler<Readonly<SuccessEventData>>;
+    onCancelCallback?: BubblingEventHandler<Readonly<CancelEventData>>;
+    onErrorCallback?: BubblingEventHandler<Readonly<ErrorEventData>>;
+    onSuccessCallback?: BubblingEventHandler<Readonly<SuccessEventData>>;
 }
 
 export default codegenNativeComponent<NativeProps>('InstantpayFacelivenessView');
