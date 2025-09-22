@@ -2,7 +2,6 @@ package com.instantpayfaceliveness
 
 import android.content.pm.ActivityInfo
 import android.util.Log
-import com.facebook.react.common.MapBuilder
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
