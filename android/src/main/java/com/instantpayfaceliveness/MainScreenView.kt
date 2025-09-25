@@ -28,7 +28,10 @@ import com.amplifyframework.auth.AWSTemporaryCredentials
 import com.amplifyframework.auth.AuthException
 import com.amplifyframework.core.Consumer
 import com.amplifyframework.ui.liveness.model.FaceLivenessDetectionException
+import com.amplifyframework.ui.liveness.ui.Camera
+import com.amplifyframework.ui.liveness.ui.ChallengeOptions
 import com.amplifyframework.ui.liveness.ui.FaceLivenessDetector
+import com.amplifyframework.ui.liveness.ui.LivenessChallenge
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.bridge.WritableMap
@@ -75,7 +78,8 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
 		),
 		"verificationScreenConfig" to mutableMapOf<Any,Any>(
 			//"hidePhotosensitiveWarning" to false,
-			"hideIntroScreen" to false
+			"hideIntroScreen" to false,
+			"hideTitleBar" to false,
 		),
 		"config" to mutableMapOf<Any,Any>(
 			"hideTitleBar" to false,
@@ -488,10 +492,23 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
 			else{
 				defaultVerificationScreenConfig?.put("hideIntroScreen", false)
 			}
+
+			if(itemVerificationScreenConfig.has("hideTitleBar") && itemVerificationScreenConfig.getBoolean("hideTitleBar")){
+				defaultVerificationScreenConfig?.put("hideTitleBar", itemVerificationScreenConfig.getBoolean("hideTitleBar"))
+			}
+			else{
+				defaultVerificationScreenConfig?.put("hideTitleBar", false)
+			}
 		}
 
 		//On Start button Handler
 		binding.startFacelivenessButton.setOnClickListener {
+
+			val verificationScreenConfig = (facelivenessOptions["verificationScreenConfig"] as? MutableMap<Any, Any>)
+
+			if(verificationScreenConfig?.get("hideTitleBar") == true){
+				binding.titleLayout.visibility = View.GONE
+			}
 
 			binding.welcomeScreenLayout.visibility = View.GONE
 
@@ -535,17 +552,23 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
 
 					binding.verificationScreenLayout.visibility = View.INVISIBLE
 
-					binding.welcomeScreenLayout.visibility = View.VISIBLE
+					//binding.welcomeScreenLayout.visibility = View.VISIBLE
+					binding.welcomeScreenLayout.visibility = View.INVISIBLE //new changes in 2.0.5
 
 					if (isAmplifyConfigured) {
 
 					} else {
-
 						//Clear SetContent for FaceLivenessDetector start
-						binding.composeViewForFaceliveness.setContent {
-
-						}
+						binding.composeViewForFaceliveness.setContent {}
 					}
+
+					//new changes in 2.0.5
+					val output = Arguments.createMap().apply {
+						putString("message", "Cancel by User on Verification Screen")
+					}
+
+					onSendReactNativeEvent(CANCEL, output)
+
 				}
 			}
 		}
@@ -577,6 +600,10 @@ class MainScreenView(context: Context) : ConstraintLayout(context){
 				sessionId = facelivenessOptions.get("sessionId").toString(),
 				region = "ap-south-1",
 				disableStartView = defaultVerificationScreenConfig?.get("hideIntroScreen") as Boolean,
+				//challengeOptions = ChallengeOptions(
+				//	faceMovement = LivenessChallenge.FaceMovement(camera = Camera.Back),
+				//	faceMovementAndLight = LivenessChallenge.FaceMovementAndLight
+				//),
 				onComplete = {
 					val output = Arguments.createMap().apply {
 						putString("sessionId", facelivenessOptions.get("sessionId").toString())

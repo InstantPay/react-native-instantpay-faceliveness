@@ -32,7 +32,8 @@ class MyDataStore: ObservableObject {
           "extraInstructionPoint" : []
         ],
         "verificationScreenConfig" : [
-          "hideIntroScreen" : false
+          "hideIntroScreen" : false,
+          "hideTitleBar" : false,
         ],
         "config" : [
           "hideTitleBar" : false,
@@ -166,6 +167,14 @@ class MyDataStore: ObservableObject {
             else{
               defaultVerificationScreenConfig?["hideIntroScreen"] = false
             }
+
+            if(parseVerificationConfigOptions.keys.contains("hideTitleBar") && (parseVerificationConfigOptions["hideTitleBar"] as! Bool)){
+
+              defaultVerificationScreenConfig?["hideTitleBar"] = true
+            }
+            else{
+              defaultVerificationScreenConfig?["hideTitleBar"] = false
+            }
           }
         }
         
@@ -183,7 +192,14 @@ class MyDataStore: ObservableObject {
               defaultConfig?["hideTitleBar"] = true
             }
             else{
-              defaultConfig?["hideTitleBar"] = false
+              var verificationScreenItem  defaultOptionsList["verificationScreenConfig"] as? [String: Any]
+
+              if((verificationScreenItem["hideTitleBar"] as! Bool)){
+                defaultConfig?["hideTitleBar"] = true
+              }
+              else{
+                defaultConfig?["hideTitleBar"] = false
+              }
             }
             
             if(parseConfigOptions.keys.contains("title") && (parseConfigOptions["title"] as! String) != ""){

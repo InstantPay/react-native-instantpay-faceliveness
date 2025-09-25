@@ -1,110 +1,25 @@
-import React, {useEffect, useState} from 'react';
+// In App.js in a new project
 
-import { StyleSheet, View, Button, SafeAreaView, Platform } from 'react-native';
-import { InstantpayFacelivenessView } from 'react-native-instantpay-faceliveness';
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen';
+import FacelivenessScreen from './screens/FacelivenessScreen';
+
+const Stack = createNativeStackNavigator();
+
+const AuthStack = createNativeStackNavigator();
 
 export default function App() {
-
-
-    const [showFaceliveness, setShowFaceliveness] = useState(false)
-    const [optionsItem, setOptionsItem] = useState("")
-
-    useEffect(() => {
-
-        let items = JSON.stringify({
-            debug : false,
-            sessionId : '',
-            accessToken : "",
-            /* welcomeScreenConfig : {
-                hideScreen: false,
-                proceedButtonText : "",
-                description : "",
-                extraInstructionPoint : []
-            },
-            verificationScreenConfig : {
-                hideIntroScreen : false
-            },*/
-            config: {
-                hideTitleBar : false,
-                title : "dsfdsf",
-                titleColor : "#000000",
-                hideCloseButton : false,
-            } 
-        });
-
-        setOptionsItem(items);
-
-    },[]);
-
-    const startFaceliveness = () => {
-
-        setShowFaceliveness(true)
-    }
-
-
-    const onCancelCallbackHandeler = (event) => {
-
-        setShowFaceliveness(false)
-
-        console.log('onCancelCallbackHandeler', event.nativeEvent);
-    }
-
-    const onErrorCallbackHandeler = (event) => {
-
-        setShowFaceliveness(false)
-
-        console.log('onErrorCallbackHandeler', event.nativeEvent);
-    }
-
-    const onSuccessCallbackHandeler = (event) => {
-
-        setShowFaceliveness(false)
-
-        console.log('onSuccessCallbackHandeler', event.nativeEvent);
-    }
-
-    return (
-        <SafeAreaView style={styles.container}>
-            
-            <View style={{ padding:0}} >
-                {
-                    !showFaceliveness ? 
-                    <>
-                        <Button
-                            title='Start faceliveness'
-                            onPress={() => startFaceliveness()}
-                        />
-                    </> : <></>
-                }
-
-                {
-                    
-                    optionsItem!="" && showFaceliveness ?
-                        <InstantpayFacelivenessView 
-                            color="#32a852"
-                            style={styles.box}
-                            options={optionsItem}
-                            onCancelCallback={(event) => onCancelCallbackHandeler(event)}
-                            onErrorCallback={(event) => onErrorCallbackHandeler(event)}
-                            onSuccessCallback={(event) => onSuccessCallbackHandeler(event)}
-                        /> : <></>
-                }
-            </View>
-        </SafeAreaView>
-    );
+  return (
+    <NavigationContainer>
+        <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <AuthStack.Group screenOptions={{ presentation: 'modal' }}>
+                <AuthStack.Screen name="FacelivenessModal" component={FacelivenessScreen} options={{ headerShown: false }} />
+            </AuthStack.Group>
+        </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        margin: 10,
-        //alignItems: 'center',
-        //justifyContent: 'center',
-    },
-    box: {
-        width: '100%',
-        height: '100%',
-        borderColor: '#000000',borderWidth: 1,
-        //marginVertical: 20,
-    },
-});
