@@ -1,6 +1,6 @@
 {
   "name": "react-native-instantpay-faceliveness",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Face Liveness verifies that only real users, not bad actors using spoofs, can access your services",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -168,11 +168,5 @@
     "languages": "kotlin-objc",
     "type": "fabric-view",
     "version": "0.54.3"
-  },
-  "dependencies": {
-    "@react-navigation/native": "^7.1.17",
-    "@react-navigation/native-stack": "^7.3.26",
-    "react-native-safe-area-context": "^5.6.1",
-    "react-native-screens": "^4.16.0"
   }
 }
