@@ -194,7 +194,7 @@ class MyDataStore: ObservableObject {
             else{
               var verificationScreenItem = defaultOptionsList["verificationScreenConfig"] as? [String: Any]
 
-              if((verificationScreenItem["hideTitleBar"] as! Bool)){
+              if((verificationScreenItem?["hideTitleBar"] as! Bool)){
                 defaultConfig?["hideTitleBar"] = true
               }
               else{
